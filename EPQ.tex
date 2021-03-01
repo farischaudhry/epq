@@ -1,8 +1,17 @@
 \documentclass[10pt,a4paper,draft]{report}
+
 \usepackage[margin=1in]{geometry} 
-\usepackage{amsmath} 
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
 \usepackage[english]{babel}
-\usepackage{amsthm}
+\usepackage{chngcntr}
+
+\usepackage{tikz, pgf, pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize[prefix=tikz/]
+
+\usepackage[hidelinks, pdfpagelabels]{hyperref}
+\hypersetup{pageanchor = false}
 
 \setlength{\parindent}{0mm}
 
@@ -14,6 +23,9 @@
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{example}{Example}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{definition}{Definition}
+
+\counterwithout{equation}{chapter}
 
 \newcommand\frontmatter{%
 	\cleardoublepage
@@ -24,7 +36,7 @@
 	\pagenumbering{arabic}}
 
 \begin{document}
-	
+
 	\frontmatter
 	\maketitle
 	
@@ -38,57 +50,5 @@
 	\chapter{Introduction to AI}
 	
 	\section{History}
-	
-	\begin{theorem}{pyth} \label{pyth}
-		\begin{equation}
-			a^2 + b^2 = c^2
-		\end{equation}
-	\end{theorem}
-	
-	\begin{example}{d}
-		\\$11$
-	\end{example}
-	
-	\begin{theorem}{a}
-		\\$2$
-	\end{theorem}
-
-	\begin{example}{e}
-		\\$111$
-	\end{example}
-
-	\begin{corollary}{d} \label{test}
-		\\$11$
-	\end{corollary}
-
-	\begin{corollary}{e}
-		\\$15451$
-	\end{corollary}
-	
-	\begin{example}{e}
-		\\$111$
-	\end{example}
-	
-	\begin{lemma}{b}
-		\\$2$
-	\end{lemma}
-
-	\begin{example}{e}
-		\\$1sadfasdf$
-	\end{example}
-
-	\begin{theorem}{c}
-		\\$7$
-	\end{theorem}
-	
-	\section{Unnumbered Section}
-	
-	\begin{theorem}{c}
-		\\$7$
-	\end{theorem}
-	
-	\section{Second Section}
-	
-	As seen in \ref{test}
-	
+		
 \end{document}
