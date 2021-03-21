@@ -1,9 +1,11 @@
 \documentclass[10pt,a4paper,draft]{report}
 
-\usepackage[margin=1in]{geometry} 
+%Add needed packages
+\usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
 \usepackage[english]{babel}
 \usepackage{chngcntr}
+\usepackage[titletoc]{appendix}
 
 \usepackage{tikz, pgf, pgfplots}
 \pgfplotsset{width=10cm,compat=1.9}
@@ -15,23 +17,22 @@
 
 \setlength{\parindent}{0mm}
 
+%Document information
 \title{Philosophy, Principles and Concept \\ of AI and Machine Learning}
 \author{Faris Chaudhry}
 \date{\today}
 
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{example}{Example}[theorem]
+%Define environments
+\newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem*{definition}{Definition}
-
 \counterwithout{equation}{chapter}
 
-\newcommand\frontmatter{%
+%Commands for changing page numbering
+\newcommand\frontmatter{
 	\cleardoublepage
 	\pagenumbering{roman}}
-
-\newcommand\mainmatter{%
+\newcommand\mainmatter{
 	\cleardoublepage
 	\pagenumbering{arabic}}
 
@@ -39,16 +40,20 @@
 
 	\frontmatter
 	\maketitle
-	
+
 	\begin{abstract}
 		placeholder
 	\end{abstract}
-	
+
 	\tableofcontents
 	\mainmatter
-	
+
 	\chapter{Introduction to AI}
-	
+
 	\section{History}
-		
+
+	\begin{appendices}
+		\chapter{Number Recognition}
+	\end{appendices}
+
 \end{document}
