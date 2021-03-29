@@ -1,4 +1,0 @@
-\babel@toc {english}{}
-\contentsline {chapter}{\numberline {1}Introduction to AI}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}History}{1}{section.1.1}%
-\contentsline {chapter}{Appendix \numberline {A}Number Recognition}{2}{appendix.a.A}%
