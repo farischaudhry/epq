@@ -769,7 +769,19 @@ INPUT C:\Users\faris\AppData\Local\MiKTeX\pdftex\config\pdftex.map
 INPUT E:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
 INPUT E:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr17.tfm
 INPUT E:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
+INPUT c:\Users\faris\Documents\projects\EPQ\EPQ.toc
+INPUT c:\Users\faris\Documents\projects\EPQ\EPQ.toc
+INPUT c:\Users\faris\Documents\projects\EPQ\EPQ.toc
+INPUT E:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT E:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT E:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT E:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam7.tfm
+INPUT E:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam5.tfm
+INPUT E:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT E:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+INPUT E:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm5.tfm
 OUTPUT c:\Users\faris\Documents\projects\EPQ\EPQ.toc
+INPUT c:\Users\faris\Documents\projects\EPQ\EPQ.lol
 INPUT c:\Users\faris\Documents\projects\EPQ\EPQ.lol
 INPUT c:\Users\faris\Documents\projects\EPQ\EPQ.lol
 OUTPUT c:\Users\faris\Documents\projects\EPQ\EPQ.lol
@@ -781,28 +793,8 @@ INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang1.sty
 INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang1.sty
 INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang1.sty
 INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang1.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang2.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang2.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang2.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang2.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang3.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang3.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang3.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang3.sty
-INPUT c:\Users\faris\Documents\projects\EPQ\code\main.lua
-INPUT c:\Users\faris\Documents\projects\EPQ\code\main.lua
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang1.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang1.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang1.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang1.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang2.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang2.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang2.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang2.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang3.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang3.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang3.sty
-INPUT E:\Program Files\MiKTeX\tex\latex\listings\lstlang3.sty
+INPUT c:\Users\faris\Documents\projects\EPQ\code\python.py
+INPUT c:\Users\faris\Documents\projects\EPQ\code\python.py
 INPUT E:\Program Files\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
 INPUT E:\Program Files\MiKTeX\fonts\tfm\public\cm\cmtt8.tfm
 INPUT c:\Users\faris\Documents\projects\EPQ\EPQ.aux

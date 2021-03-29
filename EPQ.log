@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.9)  29 MAR 2021 19:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.9)  29 MAR 2021 19:10
 entering extended mode
 **c:/Users/faris/Documents/projects/EPQ/EPQ.tex
 (c:/Users/faris/Documents/projects/EPQ/EPQ.tex
@@ -632,20 +632,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 
-{C:/Users/faris/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [1]
+{C:/Users/faris/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [1] (c:/Users\faris\Documents\projects\EPQ\EPQ.toc)
 \tf@toc=\write4
 \openout4 = `EPQ.toc'.
 
  [1
 
-]
-
-Package hyperref Warning: old lol file detected, not used; run LaTeX again.
-
+] (c:/Users\faris\Documents\projects\EPQ\EPQ.lol)
 \tf@lol=\write5
 \openout5 = `EPQ.lol'.
 
-[2
+ [2
 
 ]
 Chapter 1.
@@ -656,81 +653,19 @@ Chapter 1.
 Appendix A.
 ("E:\Program Files\MiKTeX\tex/latex/listings\lstlang1.sty"
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) ("E:\Program Files\MiKTeX\tex/latex/listings\lstlang2.sty"
-File: lstlang2.sty 2020/03/24 1.8d listings language file
-) ("E:\Program Files\MiKTeX\tex/latex/listings\lstlang3.sty"
-File: lstlang3.sty 2020/03/24 1.8d listings language file
-)
-
-c:/Users/faris/Documents/projects/EPQ/EPQ.tex:87: Package Listings Error: Couldn't load requested language.
-
-See the Listings package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.87 ...tinputlisting[language=lua]{code/main.lua}
-                                                  
-The following languages weren't loadable:
-    ,lua$
-This may cause errors in the sequel.
-
-
-c:/Users/faris/Documents/projects/EPQ/EPQ.tex:87: Package Listings Error: language lua undefined.
-
-See the Listings package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.87 ...tinputlisting[language=lua]{code/main.lua}
-                                                  
-The language is not loadable. Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-("E:\Program Files\MiKTeX\tex/latex/listings\lstlang1.sty"
-File: lstlang1.sty 2020/03/24 1.8d listings language file
-) ("E:\Program Files\MiKTeX\tex/latex/listings\lstlang2.sty"
-File: lstlang2.sty 2020/03/24 1.8d listings language file
-) ("E:\Program Files\MiKTeX\tex/latex/listings\lstlang3.sty"
-File: lstlang3.sty 2020/03/24 1.8d listings language file
-)
-
-c:/Users/faris/Documents/projects/EPQ/EPQ.tex:87: Package Listings Error: Couldn't load requested language.
-
-See the Listings package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.87 ...tinputlisting[language=lua]{code/main.lua}
-                                                  
-The following languages weren't loadable:
-    ,lua$
-This may cause errors in the sequel.
-
-
-c:/Users/faris/Documents/projects/EPQ/EPQ.tex:87: Package Listings Error: language lua undefined.
-
-See the Listings package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.87 ...tinputlisting[language=lua]{code/main.lua}
-                                                  
-The language is not loadable. Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[2
+) [2
 
 ] (c:/Users\faris\Documents\projects\EPQ\EPQ.aux) ) 
 Here is how much of TeX's memory you used:
- 30275 strings out of 480197
- 719149 string characters out of 2889048
- 1271817 words of memory out of 3000000
- 46316 multiletter control sequences out of 15000+200000
- 542493 words of font info for 57 fonts, out of 3000000 for 9000
+ 30421 strings out of 480197
+ 720343 string characters out of 2889048
+ 1271620 words of memory out of 3000000
+ 46468 multiletter control sequences out of 15000+200000
+ 544192 words of font info for 65 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 96i,6n,105p,773b,1097s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 96i,6n,105p,773b,1311s stack positions out of 5000i,500n,10000p,200000b,50000s
 <E:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><E:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><E:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><E:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><E:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on c:/Users\faris\Documents\projects\EPQ\EPQ.pdf (6 pages, 59824 bytes).
+Output written on c:/Users\faris\Documents\projects\EPQ\EPQ.pdf (6 pages, 66603 bytes).
 PDF statistics:
  44 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
