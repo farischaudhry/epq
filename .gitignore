@@ -7,3 +7,5 @@
 *.toc
 *.lol
 *.synctex*
+.vscode
+settings.json
