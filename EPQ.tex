@@ -10,6 +10,9 @@
 \usepackage{listings}
 \usepackage{xcolor}
 
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
 \usepackage{tikz, pgf, pgfplots}
 \pgfplotsset{width=10cm,compat=1.9}
 \usepgfplotslibrary{external}
@@ -39,7 +42,6 @@
     showtabs=false,
     tabsize=2
 }
-
 \lstset{style=code}
 
 \usepackage[hidelinks, pdfpagelabels]{hyperref}
@@ -68,23 +70,36 @@
 
 \begin{document}
 
+	%Starting pages; title, contents etc.
 	\frontmatter
 	\maketitle
 
 	\begin{abstract}
+
 	\end{abstract}
 
 	\tableofcontents
 	\lstlistoflistings
 	\mainmatter
 
+	%Start of chapters
 	\chapter{Introduction to AI}
 
-	\section{History}
+	\chapter{Types of Machine Learning}
+
+	\chapter{Fundamental Math}
+
+	\chapter{Game Theory}
+
+	\chapter{Optimization Algorithms}
+
+	\chapter{Ethical, Moral and Legal Considerations}
 
 	\begin{appendices}
+
 		\chapter{Number Recognition}
-		\lstinputlisting[language=python]{code/python.py}
+
+		\chapter{Chess Bot}
 
 	\end{appendices}
 
