@@ -1,7 +1,9 @@
-*.aux*
+*.aux
+*.auxlock
 *.log
 *.fls
 *.fdb_latexmk
 *.out
 *.toc
 *.lol
+*.synctex*
