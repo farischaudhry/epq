@@ -6,11 +6,41 @@
 \usepackage[english]{babel}
 \usepackage{chngcntr}
 \usepackage[titletoc]{appendix}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{xcolor}
 
 \usepackage{tikz, pgf, pgfplots}
 \pgfplotsset{width=10cm,compat=1.9}
 \usepgfplotslibrary{external}
 \tikzexternalize[prefix=tikz/]
+
+%Colours and styling for code segments
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{code}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=code}
 
 \usepackage[hidelinks, pdfpagelabels]{hyperref}
 \hypersetup{pageanchor = false}
@@ -18,7 +48,7 @@
 \setlength{\parindent}{0mm}
 
 %Document information
-\title{Philosophy, Principles and Concept \\ of AI and Machine Learning}
+\title{Philosophies, Principles and Concepts \\ of AI and Machine Learning}
 \author{Faris Chaudhry}
 \date{\today}
 
@@ -42,10 +72,10 @@
 	\maketitle
 
 	\begin{abstract}
-		placeholder
 	\end{abstract}
 
 	\tableofcontents
+	\lstlistoflistings
 	\mainmatter
 
 	\chapter{Introduction to AI}
@@ -54,6 +84,8 @@
 
 	\begin{appendices}
 		\chapter{Number Recognition}
+		\lstinputlisting[language=lua]{code/main.lua}
+
 	\end{appendices}
 
 \end{document}
