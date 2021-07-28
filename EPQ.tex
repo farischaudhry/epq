@@ -1,66 +1,74 @@
 \documentclass[10pt,a4paper]{report}
 
-%Add needed packages
+%Packages
+\usepackage[utf8]{inputenc}
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
 \usepackage[english]{babel}
+\usepackage{csquotes}
 \usepackage{chngcntr}
 \usepackage[titletoc]{appendix}
-\usepackage[utf8]{inputenc}
 \usepackage{listings}
 \usepackage{xcolor}
 
+%Citations
+\usepackage{biblatex}
+\addbibresource{references.bib}
+
+%Images and Graph Plots
 \usepackage{graphicx}
 \graphicspath{{images/}}
-
 \usepackage{tikz, pgf, pgfplots}
-\pgfplotsset{width=10cm,compat=1.9}
+\pgfplotsset{width=10cm,compat=newest}
 \usepgfplotslibrary{external}
 \tikzexternalize[prefix=tikz/]
 
-%Colours and styling for code segments
+%Code Segments
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
 \lstdefinestyle{code}{
-    backgroundcolor=\color{backcolour},
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,
-    breaklines=true,
-    captionpos=b,
-    keepspaces=true,
-    numbers=left,
-    numbersep=5pt,
-    showspaces=false,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=2
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2
 }
 \lstset{style=code}
 
+%Hyperlinks
 \usepackage[hidelinks, pdfpagelabels]{hyperref}
-\hypersetup{pageanchor = false}
+\hypersetup{pageanchor=true}
 
 \setlength{\parindent}{0mm}
+\setlength{\parskip}{2mm}
 
-%Document information
-\title{Philosophies, Principles and Concepts \\ of AI and Related Fields}
+%Document Information
+\title{What are the limitations of derivative-based \\
+	   models for optimization in machine learning?}
 \author{Faris Chaudhry}
 \date{\today}
 
-%Define environments
+%Environments
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem*{definition}{Definition}
 \counterwithout{equation}{chapter}
 
-%Commands for changing page numbering
+%Page Numbering
 \newcommand\frontmatter{
 	\cleardoublepage
 	\pagenumbering{roman}}
@@ -69,50 +77,41 @@
 	\pagenumbering{arabic}}
 
 \begin{document}
-
-	%Starting pages; title, contents etc.
 	\frontmatter
 	\maketitle
 
 	\begin{abstract}
-
+		Most machine learning models can be transposed into optimization problems
+		with the goal being finding the global minima or maxima. This paper covers
+		how the main learning methodologies (supervised, unsupervised
+		and reinforcement) are essentially optimization and the mathematical models
+		commonly used in the optimization along with the limitations of these methods.
 	\end{abstract}
 
 	\tableofcontents
-	\lstlistoflistings
 	\mainmatter
 
-	%Start of chapters
-	\chapter{Introduction to AI}
+    \chapter{Introduction to Machine Learning and Optimization}
 
-	\chapter{Types of Machine Learning}
+		\section{What is Machine Learning?}
+			Machine learning (ML) is a subfield of artificial intelligence (AI) which,
+			broadly speaking, is the use of computational methods and models to improve
+			performance and predictions through experience \autocite{FoundationsOfMachineLearning}.
+			Unlike humans, this learning is based entirely on data and statistics and
+			experience is gained through interaction with a training set of data
+			or an environment of some kind. As a result of this,
 
-	\chapter{Fundamental Math}
+		\section{Defining Factors of Optimization}
 
-	\section{Linear Algebra}
+		\section{Notation in Optimization}
 
-	\subsection{Vectors}
+	\chapter{Supervised Learning}
 
-	\subsection{Matrices}
+	\chapter{Unsupervised Learning}
 
-	\subsection{Eigenvalues and Eigenvectors}
+	\chapter{Reinforcement Learning}
 
-	\section{Calculus}
+	\chapter{Mathematical Models for Optimization}
 
-	\section{Probability}
-
-	\section{Miscellaneous}
-
-	\chapter{Game Theory}
-
-	\chapter{Optimization Algorithms}
-
-	\begin{appendices}
-
-		\chapter{Number Recognition}
-
-		\chapter{Chess Bot}
-
-	\end{appendices}
-
+	\printbibliography[title=References]
 \end{document}
