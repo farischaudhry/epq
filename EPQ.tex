@@ -163,6 +163,7 @@
 				For a function $f(x)$ to be continuous over the interval $I = [a,b]$
 				\begin{equation}
 					\forall k \in I, \lim_{x \to k} f(x) = f(k)
+					\label{eq:continuity}
 				\end{equation}
 				This means that, given any number in the interval, as $x$ approaches that number it would be equal to putting
 				the number into the function. This prevents any discontinuity since the limit wouldn't exist at discontinuous points. In fig. \ref{fig:discontinuity},
@@ -190,12 +191,14 @@
 				For a single-valued function, $f(x)$, the derivative, $f'(x)$ exists iff the following limits exists.
 				\begin{equation}
 					\frac{df}{dx} = \lim_{\Delta x \to 0} \frac{f(x+\Delta x) - f(x)}{\Delta x}
+					\label{eq:first-principles-uni}
 				\end{equation}
 				However, most objective functions will be multi-valued to account for all the variables so this
 				definition must be extended. This is the same principle but a nudge in a specific direction. Suppose
 				there is a function $f(x_1,\cdots,x_i)$ then the derivative with respect to a certain variable, $x_n$, will be.
 				\begin{equation}
-					\frac{\partial f}{\partial x} = \lim_{x \to 0} \frac{f(x_1,\cdots,x_n+\Delta x,\cdots,x_i) - f(x_1, \cdots,x_n,\cdots,x_i)}{\Delta x}
+					\frac{\partial f}{\partial x_n} = \lim_{x \to 0} \frac{f(x_1,\cdots,x_n+\Delta x,\cdots,x_i) - f(x_1, \cdots,x_n,\cdots,x_i)}{\Delta x}
+					\label{eq:first-principles-multi}
 				\end{equation}
 				In practice these rigorous definitions are not used but the concept of continuous differentiability is important.
 				\begin{itemize}
@@ -281,6 +284,7 @@
 			The general equation \autocite[p. 3]{SurveyOfOptimizationMethods} for this can be written as:
 			\begin{equation}
 				\min_\theta \frac{1}{N} \sum_{i=1}^{N} L(y^i, f(x^i,\theta))
+				\label{eq:supervised-learning-general}
 			\end{equation}
 			where $N$ is the number of training samples, $\theta$ is the parameter of the mapping function, $x^i$ is a feature vector
 			and $y^i$ is the array of labels associated with that feature vector. \par
@@ -289,16 +293,16 @@
 			deal with this is through a regularization item, $\lambda$:
 			\begin{equation}
 				\min_\theta \frac{1}{N} \sum_{i=1}^{N} L(y^i, f(x^i,\theta)) + \lambda\| \theta\|_{2}^{2}
+				\label{eq:supervised-learning-regularization}
 			\end{equation}
 			Regularization fundamentally discourages learning complex models and will be covered more in depth when talking about limitations.
 
 		\section{Limitations of Supervised Learning}
-			\subsection{Data Preprocessing and Quality}
+			Models don't generalize well from observed, training data to unseen data \autocite{OverfittingSupervisedLearning}. The accuracy might be near perfect
+			on training data while being poor on unseen data somewhat mimicking the model memorizing the training data without grasping the mapping function.
 
-			\subsection{Over Fitting and Regularization}
-				Models don't generalize well from observed, training data to unseen data \autocite{OverfittingSupervisedLearning}
 
-			\subsection{Computational Resources}
+
 
 
 
@@ -311,46 +315,201 @@
 			Unsupervised learning problems strive to solve 1 of 2 problems: finding clusters of similar data and summarizing the distribution of the data
 			(density estimation).
 
-			\subsection{Clustering}
-				Unlike classification, where the classes are predefined, clustering requires the model to define its own cluster of data
-				based on the similarites of the features.
-				\begin{figure}[h]
-					\centering
-					\includegraphics[scale=0.7]{clustering-diagram.png}
-					\caption{example of clustering}
-					\label{fig:clustering}
-				\end{figure} \\
-				In general, optimization will involve making the variance of each cluster as small as possible, which will
-				be equivilant to the distnace from the center of the cluster.
-				\begin{equation}
-					\min_s \sum_{k=1}^{K} \sum_{x\in S_k} \| x - \mu_k \|_{2}^{2}
-				\end{equation}
+				\subsection{Clustering}
+					Unlike classification, where the classes are predefined, clustering requires the model to define its own cluster of data
+					based on the similarites of the features.
+					\begin{figure}[h]
+						\centering
+						\includegraphics[scale=0.7]{clustering-diagram.png}
+						\caption{example of clustering}
+						\label{fig:clustering}
+					\end{figure} \\
+					Optimization will involve making the variance of each cluster as small as possible; variance will
+					be equivilant to the distnace from the center of the cluster. This can be done by iterating through each cluster
+					and checking the distance from the centre of the cluster for each sample.
+					\begin{equation}
+						\min_s \sum_{k=1}^{K} \sum_{x\in S_k} \| x - \mu_k \|_{2}^{2}
+						\label{eq:unsupervised-learning-clustering}
+					\end{equation}
+					where $s$ is the variance, $K$ is the number of clusters, $S_k$ is the set of samples for that cluster,
+					$\mu_k$ is the centre of a cluster \autocite[p. 3-4]{SurveyOfOptimizationMethods}.
 
-			\subsection{Density Estimation}
-				The assumption is that there exists some probability istribution to describe the relationship between the variables \autocite{sheather2004density}.
-				Density estimation is a useful asset in modelling to estimate the properties of a given data set (variance, skewness, type of distribution). \par
-				Suppose there exists a set of continous random variables, $(x_1,\cdots,x_n)$, then there is a
-				probability distribution that the set models, $P(x_1,\cdots,x_n)$. The goal is to find a continous probability density function (PDF)
-				that can describe the mapping: $\{x_1,\cdots,x_n\} \to P(x_1,\cdots,x_n)$. The assumption that this will PDF will be continous is valid]
-				since our objective function has the precondition of being continous.
-				\begin{figure}[h]
-					\centering
-					\includegraphics[scale=0.2]{density-estimation-diagram.jpg}
-					\caption{example of density estimation}
-					\label{fig:density-estimation}
-				\end{figure}
+				\subsection{Density Estimation}
+					The assumption is that there exists some probability istribution to describe the relationship between the variables \autocite{sheather2004density}.
+					Density estimation is a useful asset in modelling to estimate the properties of a given data set (variance, skewness, type of distribution). \par
+					Suppose there exists a set of continous random variables, $(x_1,\cdots,x_n)$, then there is a
+					probability distribution that the set models, $P(x_1,\cdots,x_n)$. The goal is to find a continous probability density function (PDF)
+					that can describe the mapping: $\{x_1,\cdots,x_n\} \to P(x_1,\cdots,x_n)$. The assumption that this will PDF will be continous is valid
+					since our objective function has the precondition of being continous.
+					\begin{figure}[h]
+						\centering
+						\includegraphics[scale=0.2]{density-estimation-diagram.jpg}
+						\caption{example of density estimation}
+						\label{fig:density-estimation}
+					\end{figure} \\
+					Getting an exact function approximation is not only unlikley but also suboptimal. As more data is added the approximation will
+					get more complex and usually closer to the actual value however too much data increases the risk of overfitting, especially if there is
+					abnormal data. Instead, the focus is to maximize the likelihood that a predicted PDF is correct. \par
+					In statistics, the likelihood function measure the goodness of fit between the data and the proposed PDF so maximizing it finds the PDF which
+					has th higest probability of fitting the data.
+					Principally, a likelihood function is written as $p(x^i,\theta)$ where $x^i$ is a datapoint and $\theta$ is a PDF.
+					However, many data sets have large  numeric ranges that can limit the effectivness of this function so it is easier to work with the
+					logarithmcic likelihood function, $\ln p(x^i,\theta)$ or $\ell(x^i,\theta)$. \par
+					It is important to note that
+					\begin{equation}
+						\max p(x^i,\theta) = \max \ell(x^i,\theta) = \widehat{\ell}(x^i, \widehat{\theta})
+					\end{equation}
+					Since $\ln$ is strictly increasing then maximizing the logarithmcic likelhood function also maximizes the likelhood function. Thus general density estimation \autocite[p. 4]{SurveyOfOptimizationMethods} is:
+					\begin{equation}
+						\max \sum_{i=1}^N \ell(x^i,\theta)
+					\end{equation}
+					where $N$ is the number of training samples and $x^i$ is a particular feature vector of a sample.
 
+			\section{Limations of Unsupervised Learning}
 
 
 	\chapter{Reinforcement Learning}
+		Reinforcement learning entails an agent interacting with an environment rather than using a traditional dataset \autocite[p. 105]{DeepLearning}.
+		The learning proccess is done through trial and error until there is a feedback loop between the environment and the agent's experience. Each situation
+		or state that the environment can have should be mapped to an action that the agent can take to maximize reward. \par
+		This game theory approach assigns a payoff yield to each action that encourages or discourages certain actions.
+		A byproduct of this is to consider how a length of time can affect the payoff of an action. For example, maybe an action has
+		a high reward when considering only the next state but when looking at the next 10 states its value is lower. This can be seen
+		in chess when, as the depth of the AI get higher, certain moves become worse since they compromise future positions. \par
+		The dynamic nature of reinforcement learning is useful in complex systems where computationally working out the whole game would be inefficent if not impossible.
+		Consider chess \autocite{shannon1950xxii} where the number of possible games is estiamted as $10^{123}$ (Shannon's number) and is too big to compute after even 5 turns.
+		\begin{figure}[h]
+			\centering
+			\begin{tabular}{||c c||}
+				\hline
+				Number of half-moves & Number of Possible Games\\ [0.5ex]
+				\hline\hline
+				1 & 20\\
+				\hline
+				2 & 400\\
+				\hline
+				3 & 8,902\\
+				\hline
+				4 & 197,281\\
+				\hline
+				5 & 4,865,609\\[1ex]
+				\hline
+			\end{tabular}
+			\caption{the exponential growth of possible chess games}
+			\label{fig:possible-chess-games}
+		\end{figure}
+
+
+		\section{Optimization in Reinforcement Learning}
+			A policy function, $\pi(s)$ maps a state, $s$, to an action, $a$, to select the best course of action from the set of all actions, $A$, that the agent
+			can take in each situation from the set of possible situations, $S$.
+			\[\pi(s) : s \to a \ \text{where} \ s\in S, a \in A\]
+			By maximizing the excpected value of this function \autocite[p. 4]{SurveyOfOptimizationMethods}, the agent will select the
+			best action to be performed in each state, maximizing the payoff of the actions.
+			\begin{equation}
+				\max_{\pi(s)} = \mathbf{E} \left[\sum_{k=1}^{T} \gamma^k r_{t+k} | S_t = s \right]
+				\label{eq:reinforcement-learning}
+			\end{equation}
+			where $T$ is the time horizon, $\gamma$ is the discount factor, $r$ is the reward function with respect to the turn and
+			the time into the future being considered, $S_t$ is a given state. \par
+			If the game was infinite - or at least has no predetermined stopping point -
+			then a simple solutions is to work out the $\lim_{T \to \infty}$ and truncate the series at some point to get a good approximation.
+			Using this method of truncation would allow the depth to be changed (how far into the future turns are considered). \par
+			The discount factor, $\gamma$, is an value that prioritizes instant reward over a future reward \autocite{sozou1998hyperbolic}.
+			If there is a constant risk which may cause failure to realize the reward then that future reward should
+			have a decreased payoff to compenstate for the risk. For example, suppose there is a 50\% chance (implying $\gamma = 0.5$) that the game ends after every
+			turn and you could choose either a payoff of 1 unit after 1 turn or a payoff of 10 units after 5 turns. Then the expected value of option 1 is
+			$0.5^1 * 1$ which is 0.5 and option 2 is $0.5^5 * 10$ which is 0.3125 so option 1 is statistically better.
+
+			\subsection{Limitations of Reinforcement Learning}
+
+
 
 	\chapter{Mathematical Models for Optimization}
 
-		\section{Creating an Objective Function}
+		\section{Constraints on the Objective Function}
+			Constraints are conditions that the soultions to the objective function must statisfy. In many cases, there are
+			certain restrictions that should be added due to computational and resource limitations. \par
+			There are 3 types of constraints that must be considered:
+			\begin{itemize}
+				\item inequality constraints such as $x \geq k$.
+				\item equality constraints such as $x = k$
+				\item data type constraints such as $x$ is an integer ($x \in \mathbb{Z}$)
+			\end{itemize}
+			Data type constraints are normally easy to deal with; changing with values the model checks or adding a conditional statement
+			can be enough in many cases. \par
+			Equality constraints can be appended onto the objective function using the Lagrange multiplier \autocite{LagrangeMultiplier}. Let
+			$f(x)$ be an objective function and $c_{n}(x) = k_n$ be an equality constraint. Then the general lagrange multiplier for $n$ constraints would be:
+			\begin{equation}
+				\mathcal{L} (x) = f(x) - \lambda_1(c_{1}(x) - k_1) - \cdots - \lambda_n(c_{n}(x) - k_n)
+			\end{equation}
+			The solution to the original objective function, $f(x)$ will be a saddle point on the lagrange multiplier. One problem with this
+			approach is that, firstly, for each constraint added there will be an extra partial derivative that needs to be computed and thus a more
+			complex simultaneous equation. In addition, inequality constarints ($c(x) \geq k$) are not supported through this method. However, there
+			is a generalization to the lagrange multiplier called the Karush–Kuhn–Tucker conditions (KKT).
 
-			\subsection{Constraints and the Lagrangian Multiplier}
+		\section{Methods for Finding Extrema}
+			\subsection{Jacobian}
+				Previously, we asscertained that the locations of the critical points required the first derivative of the function to be 0 ($f' = 0$).
+				For a single-valued function this is equivilent to solving \[\frac{dy}{dx} = 0\]
+				However for multi-valued functions a critical point will require all partial derivatives to be 0 at that point. The Jacobian \autocite{Jacobian} is
+				a vector of the parital derivatives of the function that gives a vector of the gradients at that point.
+				\begin{equation}
+					J_f = \nabla f = [\partial_{x_1} f, \cdots, \partial_{x_n} f]
+					\label{eq:jacobian}
+				\end{equation}
+				This can be solved by either setting each partial derivative to 0 and solving it simultaneously or by finding the values
+				when the value of the jacobian is 0. \[\partial_{x_1} f = \cdots = \partial_{x_n} f = 0 \ \textrm{or} \ \| J \| = 0 \]
+				Sometimes the resulting equations might be difficult to solve (polynomials of order greater than 4 for example) and brute force or numerical methods
+				might need to be used.
+			\subsection{Hessian}
+				After finding the locations of the critical points, higher order derivative tests must be used to determine the nature of the points.
+				The Hessian \autocite{Hessian} is like the 'jacobian of the jacobian' and is a representation of the change in the gradient.
+				\begin{equation}
+					H_f = \nabla(\nabla f) =
+						\begin{bmatrix}
+							\frac{\partial^2 f}{\partial x_{1}^{2}} & \frac{\partial^2 f}{\partial x_1 \partial x_2} &\cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n}\\
+							\frac{\partial^2 f}{\partial x_2 \partial x_1} & \frac{\partial^2 f}{\partial x_{2}^{2}} & \cdots & \frac{\partial^2 f}{\partial x_2 \partial x_n}\\
+							\vdots & \vdots  & \ddots & \vdots \\
+							\frac{\partial^2 f}{\partial x_n \partial x_1} & \frac{\partial^2 f}{\partial x_n \partial x_2} & \cdots & \frac{\partial^2 f}{\partial x_{n}^{2}}
+						\end{bmatrix}
+					\label{eq:hessian}
+				\end{equation}
+				Due to the commutative nature of second partial derivatives, computation time is significantly cut down as only the upper or lower
+				triangular matrix has to be calculated and then mirrored.
+				\begin{equation}
+					\frac{\partial^2 f}{\partial_y \partial_x} = \frac{\partial^2 f}{\partial_x \partial_y}
+					\label{eq:symmetry}
+				\end{equation}
+			\subsection{Higher-Order Derivative Tests}
+				Using the determinant and trace of the Hessian matrix where $\lambda$ is an eigenvalue
+				\begin{equation}
+					trH = \sum_{i=1}^n H_{ii} = \prod_{\forall i} \lambda_i \ \text{and} \ detH = \sum_{\forall i} \lambda_i
+				\end{equation}
+				the second derivaitve test is as follows.
+				Let $(x_1,x_2,\cdots,x_n)$ be a critical point substituted into the Hessian. Then \autocite{SecondDerivativeTest}
+				\begin{itemize}
+					\item $detH > 0$ and $trH > 0 \implies$ local minimum.
+					\item $detH > 0$ and $trH < 0 \implies$ local maximum.
+					\item  $detH < 0 \implies$ saddle point.
+					\item $detH = 0 \implies$ inconclusive test.
+				\end{itemize}
+				Doing this for all critical points will determine which are extrema and comparing between the extrema will find the global
+				minimum or maximum, which will be the solution to the optimization problem. In the case when the test is inconclusive, higher-order
+				tests \autocite{ExtremumTest} can be used (although depending on the variables many derivatives would have to be calculated) or inspection. \par
+				For complex functions, visual inspection is usually impossible (since displaying something with greater than 3 dimensions is unintuivtive) but numerical inspection can be useful, like
+				adding $dx_n$ for each variable and comparing the values. For example, if the neighbourhood of a point has values greater then the point then it must a be minima. \par
+				The Hessian matrix is not without limitations; the computing time required to work out the Hessian scales greatly as each new variable is added and, for each critical
+				point, the eigenvalues of the matrix will have to be worked out to find the trace and determinant. To mitgate this there are algorithims which can approximate the Hessian
+				with the only condiiton that the matrix is invertible (the determinant is not 0).
 
-	\chapter{Conclusion}
+			\subsection{Iterative Methods}
+					When exact solutions are too difficult to calculate either due to too many variables or the Hessian matrix being to large
+					to reasonably store, iterative methods can be used as numerical approximations. Since the approximation will converge to the
+					answer as the number of iterations approaches infinity, many iterative methods are far superior, in practice, because of the lower
+					resource cost relative to the accuracy of the approximation. \par
+					%TODO newtons methdod for optimization
 
-	\printbibliography[title=References]
+\listoffigures
+\printbibliography[title=References]
 \end{document}
