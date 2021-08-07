@@ -262,7 +262,7 @@
 				Given a particular feature vector (a vector of the parameters of the classification function) the goal is to assign a set of class labels.
 				\begin{figure}[h]
 					\centering
-					\includegraphics[scale=0.5]{classification-diagram.png}
+					\includegraphics[scale=0.7]{classification-diagram.png}
 					\caption{example of classification}
 					\label{fig:classifcation}
 				\end{figure}
@@ -273,7 +273,7 @@
 				Then a general regression function can be described as the mapping: \[[x_1,x_2,\cdots] \mapsto k\]
 				\begin{figure}[h]
 					\centering
-					\includegraphics[scale=0.5]{regression-diagram.png}
+					\includegraphics[scale=0.7]{regression-diagram.png}
 					\caption{example of regression}
 					\label{fig:regression}
 				\end{figure}
@@ -383,6 +383,21 @@
 					where $N$ is the number of training samples and $x^i$ is a particular feature vector of a sample.
 
 			\section{Limitations of Unsupervised Learning}
+				The quality data is, just like in supervised learning, pivotal in the ability for the model to function. Although data
+				doesn't need to be pre-proccessed and labelled in the same manner as supervised learning, unsupervised learning
+				still has the shortfall of requiring data that is representative of the whole data set to prevent skew results. Furthermore,
+				the data needs to have a suitable resolution for clustering. If the data has a small resolution then segments which represent seperate clusters could be
+				grouped together. Consider data which represents clusters `$2-3$', `$4-5$' and `$95-100$' units. There is a possibility that the first 2 clusters are grouped as 1 cluster.
+				Problems like these could be done by using a recursive method to analyse clusters of cluster but in the end the proccess will always be time-consuming. \par
+				The nature of unsupervised learning - being the use raw data - will lead to apprehension as to the usefulness and accuracy of the results. Without human intervention the
+				practicallity of the outputs will be greatly dependant on the model being used. Accuracy is generally lower than other learning optinions seeing that the model has to
+				establish its own connections based on features in similarity with no notion as to whether they are correct. It is due to this fact that the relationships extracted might be
+				moot with no application. \par
+				Finally, unsupervised tasks will require a far greater amount of data than their supervised counterparts. Extracting worthwhile realtationships with no way to predefine the output
+				of the model will require much more data to not only diminish the effect that outliers and abonrmalities would have on the predicted but also to compenste for the complexity with scales
+				exponentially with each input variable added. \par
+				It is as a consequence of these limitations that often unspervised learning is less preferrable to some hybrid models like semi-supervised learning which mixes labelled and unlabelled data
+				to increase the chance of producing practical and relevant results.
 
 
 	\chapter{Reinforcement Learning}
@@ -394,7 +409,7 @@
 		a high reward when considering only the next state but when looking at the next 10 states its value is lower. This can be seen
 		in chess when, as the depth of the AI get higher, certain moves become worse since they compromise future positions. \par
 		The dynamic nature of reinforcement learning is useful in complex systems where computationally working out the whole game would be inefficient if not impossible.
-		Consider chess \autocite{shannon1950xxii} where the number of possible games is estimated as $10^{123}$ (Shannon's number) and is too big to compute after even 5 turns.
+		Consider chess \autocite{shannon1950xxii} where the number of possible games is estimated as $10^{123}$ (Shannon's number) and is too big to compute effectivley after even 5 turns.
 		\begin{figure}[h]
 			\centering
 			\begin{tabular}{||c c||}
@@ -436,10 +451,28 @@
 			If there is a constant risk which may cause failure to realize the reward then that future reward should
 			have a decreased payoff to compensate for the risk. For example, suppose there is a 50\% chance (implying $\gamma = 0.5$) that the game ends after every
 			turn and you could choose either a payoff of 1 unit after 1 turn or a payoff of 10 units after 5 turns. Then the expected value of option 1 is
-			$0.5^1 * 1$ which is 0.5 and option 2 is $0.5^5 * 10$ which is 0.3125 so option 1 is statistically better.
+			$0.5^1 \cdot  1$ which is 0.5 and option 2 is $0.5^5 \cdot  10$ which is 0.3125 so option 1 is statistically better.
 
-			\subsection{Limitations of Reinforcement Learning}
-
+		\section{Limitations of Reinforcement Learning}
+			A nosiy environment will cause a sharp decrease in learning speed. If feedback is delayed (like the effect of an action doesn't happen until a few time intervals after)
+			then differentiating cause and effect can be difficult. Unlike data sets where the noise can be artifically removed, there is no possibility of removing
+			this noise since then the environment would be different and the agent would be acting on a unrelated environment. It is because of this that the efficacy
+			of the model will fluctuate as new metas are being developed. Whenever new stategies are tried, the performance might decrease in the short term however
+			the trial-and-error proccess will encourage a greater depth of strategy later. \par
+			Many of the parameters of an environment will have to be manually set. For example the most sensical value for the discount factor is
+			usually obvious - as close to 1 as possible for continous environments and otherwise the risk every time step - but realistically there has
+			to be some focus on short term rewards as an extremley long wait is not condusive to real life. This can be seen in chess where three-fold repetition
+			or and the 50 move rule (no captures or pawn moves in 50 turns) will result in a draw. In this case, there is a preset condition that prevents the best moves
+			being played if the time scale is too large. \par
+			The subjective nature of payoffs is also pertinent to the development of a simulation. As systems get more complex it becomes more difficult to ascribe
+			values to the actions that can be taken. Either these values will follow some subjective set of rules, in which case they still influenced by some bias, or they
+			must be chosen subjectivley thus human bias creates preferred ways to operate leading to a sub-optimal set of actions. \par
+			 One way to minimize human bias and thus
+			reach the optimum solutions is to simplify the outcomes. For instance, in chess the set of outcomes and payoffs can be reduced to a positive payoff for a win and a
+			negative payoff for a lose without considering the possible decisions to get there. This methodology, when paired with deep learning, will lead to the computer playing
+			many games with itself to work out the relative payoffs and tweak them over time as new strategies eclipse old ones. Over millions of games and multiple generations
+			of neural networks the end result will be a model with the optimum policy function that has as little human bias as possible and therefore can express actions that would
+			naturally be unorthodox or creative. The downside of this is the resources and time required to reach the this transcendental state in a reasonable timeframe.
 
 
 	\chapter{Mathematical Models for Optimization}
