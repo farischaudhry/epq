@@ -116,7 +116,7 @@
 			with other hybrid methods being combinations of these. Each type of learning lends itself to certain types of problems.
 			Supervised learning is used for classifying images and extrapolating data. Unsupervised learning
 			takes raw data and finds patterns such as the overall distribution or groups with similar attributes. Reinforcement is used in complex
-			systems which many changing variables that would be computationally difficult to solve otherwise, like chess.
+			systems with many changing variables that would be computationally difficult to solve otherwise, like chess.
 
 		\section{Prerequisite Conditions for Derivative-Based Optimization}
 			Optimization revolves around minimizing the loss or maximizing the value of a function. In the
@@ -146,10 +146,12 @@
 						\addplot [red] {x^2};
 					\end{axis}
 				\end{tikzpicture}
-				\caption{graph of $x^2$}
+				\includegraphics[width=5cm,height=5cm,keepaspectratio]{saddle-point.png}
+				\caption{graph of $x^2$ (left) and an example of a saddle point (right)}
 				\label{fig:extrema}
 			\end{figure}
-			So the objective becomes to find the location and nature - whether it's an minima, maxima or saddle point - of each critical point.
+			So the objective becomes to find the location and nature - whether it's a minima, maxima or saddle point - of each critical point. A saddle point, such as the one pictured above, is defined as
+			being a minimum point in one direction while being a maximum in other. This gives it a derivative of 0 but it isn't a solution to the optimization problem.
 
 			\subsection{Continuity and Differentiability}
 				The most essential requirement to using derivative-based methods will be that the objective
@@ -253,7 +255,7 @@
 
 			\subsection{Classification}
 				Classification problems are about predicting the class labels of an object. A common example
-				of classification is assigning an digit label to a handwritten digit. However, these objects
+				of classification is assigning a digit label to a handwritten digit. However, these objects
 				could be anything that can be labelled like sentences or sounds. \par
 				Let $x_n$ be a feature/parameter of the object and $l_n$ be a label.\\
 				Then a general classification function can be described as the mapping: \[[x_1,x_2,\cdots] \mapsto [l_1,l_2,\cdots]\]
@@ -279,14 +281,15 @@
 
 		\section{General Optimization of Supervised Learning Problems}
 			The optimization of supervised learning problems requires minimizing the average value of the loss function using the training samples. This produces the
-			most accurate approximation to the underlying function to extrapolate values. \par
+			most accurate approximation to the underlying function to extrapolate values.\par
 			The general equation \autocite[p. 3]{SurveyOfOptimizationMethods} for this can be written as:
 			\begin{equation}
 				\min_\theta \frac{1}{N} \sum_{i=1}^{N} L(y^i, f(x^i,\theta))
 				\label{eq:supervised-learning-general}
 			\end{equation}
 			where $N$ is the number of training samples, $\theta$ is the parameter of the mapping function, $x^i$ is a feature vector
-			and $y^i$ is the array of labels associated with that feature vector. \par
+			and $y^i$ is the array of labels associated with that feature vector. $L$ is a specific type of objective function, called a loss function,
+			which is, by definition, meant to be minimized and $f$ is the mapping function that takes the feature vector to the label vector. \par
 			The problem with using training samples is that the resulting function might be over-fitted to the given data. This would mean
 			that, although the model is accurate for the training data it has been given, accuracy is reduced on new objects. A method to
 			deal with this is through a regularization item, $\lambda$:
@@ -315,12 +318,6 @@
 			human intervention will be required to label the data which means that each label has to be calculated for potentially thousands or millions of training samples.
 			Apart from the amount of time this takes, human error can be a great detriment to the quality of the data (measurement errors and mislabelling). Most of the time, producing a good
 			model is limited by how much good data you can obtain.
-
-
-
-
-
-
 
 	\chapter{Unsupervised Learning}
 
@@ -355,7 +352,7 @@
 					Density estimation is a useful asset in modelling to estimate the properties of a given data set (variance, skewness, type of distribution). \par
 					Suppose there exists a set of continuous random variables, $(x_1,\cdots,x_n)$, then there is a
 					probability distribution that the set models, $P(x_1,\cdots,x_n)$. The goal is to find a probability density function (PDF)
-					that can describe the mapping: $(x_1,\cdots,x_n) \to P(x_1,\cdots,x_n)$. The assumption that this will PDF will be continuous is valid
+					that can describe the mapping: $(x_1,\cdots,x_n) \to P(x_1,\cdots,x_n)$. The assumption is that this will PDF will be continuous
 					since our objective function has the precondition of being continuous.
 					\begin{figure}[h]
 						\centering
@@ -377,7 +374,7 @@
 					\end{equation}
 					Since $\ln$ is strictly increasing, maximizing the logarithmic likelihood function also maximizes the likelihood function. Thus general density estimation \autocite[p. 4]{SurveyOfOptimizationMethods} is:
 					\begin{equation}
-						\max \sum_{i=1}^N \ell(x^i,\theta)
+						\max \frac{1}{N} \sum_{i=1}^N \ell(x^i,\theta)
 					\end{equation}
 					where $N$ is the number of training samples and $x^i$ is a particular feature vector of a sample.
 
@@ -406,7 +403,8 @@
 		a high reward when considering only the next state but when looking at the next 10 states its value is lower. This can be seen
 		in chess when, as the depth of the AI get higher, certain moves become worse as they compromise future positions. \par
 		The dynamic nature of reinforcement learning is useful in complex systems where computationally working out the whole game would be inefficient if not impossible.
-		Consider chess \autocite{shannon1950xxii} where the number of possible games is estimated as $10^{123}$ (Shannon's number) and is too big to compute effectively after even 5 turns.
+		Consider chess \autocite{shannon1950xxii} where the number of possible games is estimated as $10^{123}$ (Shannon's number) and is too big to compute effectively after even 5 moves (a half-move is counted after
+		either white or black moves rather than a full move which requires both players to move).
 		\begin{figure}[h]
 			\centering
 			\begin{tabular}{||c c||}
@@ -498,7 +496,7 @@
 		\section{Methods for Finding Extrema}
 			\subsection{Jacobian}
 				Previously, it was ascertained that the locations of the critical points required the first derivative of the function to be 0 ($f' = 0$).
-				For a single-valued function this is equivalent to solving \[\frac{dy}{dx} = 0\]
+				For a single-valued function this is equivalent to solving \[\frac{df}{dx} = 0\]
 				However for multi-valued functions a critical point will require all partial derivatives to be 0 at that point. The Jacobian \autocite{Jacobian} is
 				a vector of the partial derivatives of the function that gives a vector of the gradients at that point.
 				\begin{equation}
